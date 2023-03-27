@@ -10,5 +10,6 @@ public static class ServicesRegistration
     public static void AddInfrastructureServices(this IServiceCollection services)
     {
         services.AddSingleton<IMovieRankRepository, MovieRankRepository>();
+        services.AddSingleton<IStudentGradeRepository, StudentGradeRepository>();
     }
 }

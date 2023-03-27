@@ -120,5 +120,6 @@ public static class ServicesRegistration
     public static void AddApplicationServices(this IServiceCollection services)
     {
         services.AddSingleton<IMovieRankService, MovieRankService>();
+        services.AddSingleton<IStudentGradeService, StudentGradeService>();
     }
 }
