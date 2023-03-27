@@ -33,7 +33,7 @@ public class MoviesController : ControllerBase
 
 
     /// <summary>
-    /// Get a specific movie by specifing an userId and movieName
+    /// Get a specific movie by specifying an userId and movieName
     /// </summary>
     /// <param name="userId">user id that ranked the movie</param>
     /// <param name="movieName">movie name</param>
@@ -49,7 +49,7 @@ public class MoviesController : ControllerBase
 
 
     /// <summary>
-    /// Get users ranked movies by specifing an userId
+    /// Get users ranked movies by specifying an userId
     /// </summary>
     /// <param name="userId">user id that ranked the movie</param>
     [HttpGet("{userId}/ranked")]
@@ -64,7 +64,7 @@ public class MoviesController : ControllerBase
 
 
     /// <summary>
-    /// Get users ranked movies by specifing an userId and movieName startsWith
+    /// Get users ranked movies by specifying an userId and movieName startsWith
     /// </summary>
     /// <param name="userId">user id that ranked the movie</param>
     /// <param name="movieNameStartsWith">movie name that starts with</param>
