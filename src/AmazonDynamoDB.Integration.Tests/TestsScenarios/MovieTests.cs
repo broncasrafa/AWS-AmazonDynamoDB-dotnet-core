@@ -13,7 +13,7 @@ public class MovieTests : IClassFixture<CustomWebApplicationFactory<Program>>
 
     public MovieTests(CustomWebApplicationFactory<Program> factory)
     {
-        _httpClient = factory.CreateClient();
+        _httpClient = factory.CreateClient(new Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryClientOptions { BaseAddress = new Uri("http://localhost:8000") });
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public class MovieTests : IClassFixture<CustomWebApplicationFactory<Program>>
         var json = JsonConvert.SerializeObject(movieDb);
         var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var response = await _httpClient.PostAsync($"movies/{userId}", stringContent);
+        var response = await _httpClient.PostAsync($"api/movies/{userId}", stringContent);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }

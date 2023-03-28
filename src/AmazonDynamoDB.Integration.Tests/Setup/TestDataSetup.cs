@@ -1,14 +1,16 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
+using Amazon.Runtime;
 
 namespace AmazonDynamoDB.Integration.Tests.Setup;
 
 public class TestDataSetup
 {
     private static string _serviceURL = "http://localhost:8000";
-
+    
     private static AmazonDynamoDBConfig _amazonDynamoDBConfig = new AmazonDynamoDBConfig { ServiceURL = _serviceURL };
-    private static IAmazonDynamoDB _AmazonDynamoDBClient = new AmazonDynamoDBClient(_amazonDynamoDBConfig);
+    private static BasicAWSCredentials _basicAWSCredentials = new BasicAWSCredentials("xxx", "xxx");
+    private static IAmazonDynamoDB _AmazonDynamoDBClient = new AmazonDynamoDBClient(_basicAWSCredentials, _amazonDynamoDBConfig);
 
 
     public async Task CreateTableAsync()

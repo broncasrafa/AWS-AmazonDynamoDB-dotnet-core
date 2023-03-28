@@ -7,6 +7,7 @@ namespace AmazonDynamoDB.Integration.Tests.Setup;
 public class TestContext : IAsyncLifetime
 {
     private readonly DockerClient _dockerClient;
+    private readonly DockerClientConfiguration _dockerClientConfig;
     private const string _ContainerImageUri = "amazon/dynamodb-local";
     private const string _PortDefault = "8000";
     private string _containerId;
@@ -30,7 +31,7 @@ public class TestContext : IAsyncLifetime
 
     public TestContext()
     {
-        _dockerClient = new DockerClientConfiguration(new Uri(DockerApiUri)).CreateClient();
+        _dockerClient = new DockerClientConfiguration(new Uri(DockerApiUri), null, TimeSpan.FromMinutes(5)).CreateClient();
     }
 
 
@@ -44,7 +45,10 @@ public class TestContext : IAsyncLifetime
     {
         if (_containerId != null)
         {
+            var images = await _dockerClient.Images.ListImagesAsync(new ImagesListParameters { All = true });
+            var image = images.Where(c => c.RepoTags.Any(x => x == $"{_ContainerImageUri}:latest")).FirstOrDefault();
             await _dockerClient.Containers.KillContainerAsync(_containerId, new ContainerKillParameters());
+            await _dockerClient.Images.DeleteImageAsync($"{_ContainerImageUri}:latest", new ImageDeleteParameters { Force = true });
         }
     }    
 
