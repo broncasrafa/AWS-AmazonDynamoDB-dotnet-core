@@ -12,5 +12,6 @@ public static class ServicesRegistration
         services.AddSingleton<IMovieRankRepository, MovieRankRepository>();
         services.AddSingleton<IStudentGradeRepository, StudentGradeRepository>();
         services.AddSingleton<ILocadoraRepository, LocadoraRepository>();
+        services.AddSingleton<ISetupRepository, SetupRepository>();
     }
 }
