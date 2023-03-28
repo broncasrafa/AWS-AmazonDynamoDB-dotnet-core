@@ -3,7 +3,7 @@
 namespace AmazonDynamoDB.Infrastructure.Models;
 
 [DynamoDBTable("MovieRank")]
-internal class MovieDb
+public class MovieDb
 {
     [DynamoDBHashKey]
     public int UserId { get; set; }

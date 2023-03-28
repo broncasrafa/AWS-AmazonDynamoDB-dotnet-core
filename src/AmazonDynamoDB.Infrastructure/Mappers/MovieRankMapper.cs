@@ -3,7 +3,7 @@ using AmazonDynamoDB.Infrastructure.Models;
 
 namespace AmazonDynamoDB.Infrastructure.Mappers;
 
-internal static class MovieRankMapper
+public static class MovieRankMapper
 {
     public static IEnumerable<Movie> Map(IEnumerable<MovieDb> models)
     {

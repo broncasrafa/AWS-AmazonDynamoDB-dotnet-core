@@ -5,23 +5,23 @@ using Amazon.DynamoDBv2.Model;
 
 namespace AmazonDynamoDB.Infrastructure.Mappers;
 
-internal static class LocadoraMapper
+public static class LocadoraMapper
 {
-    internal static IEnumerable<Locadora> Map(ScanResponse response)
+    public static IEnumerable<Locadora> Map(ScanResponse response)
     {
         if (response == null || response.Items == null || response.Items.Count == 0)
             return Enumerable.Empty<Locadora>();
 
         return response.Items.Select(c => Map(c));
     }
-    internal static IEnumerable<Locadora> Map(QueryResponse response)
+    public static IEnumerable<Locadora> Map(QueryResponse response)
     {
         if (response == null || response.Items == null || response.Items.Count == 0)
             return Enumerable.Empty<Locadora>();
 
         return response.Items.Select(c => Map(c));
     }
-    internal static Locadora Map(Dictionary<string, AttributeValue> item)
+    public static Locadora Map(Dictionary<string, AttributeValue> item)
     {
         return new Locadora
         (
@@ -33,7 +33,7 @@ internal static class LocadoraMapper
             summary: item["summary"].S
         );
     }
-    internal static Locadora Map(GetItemResponse response)
+    public static Locadora Map(GetItemResponse response)
     {
         return new Locadora
         (
@@ -46,7 +46,7 @@ internal static class LocadoraMapper
         );
     }
 
-    internal static Dictionary<string, AttributeValue> MapToDbItem(Locadora locadora)
+    public static Dictionary<string, AttributeValue> MapToDbItem(Locadora locadora)
     {
         return new Dictionary<string, AttributeValue>
         {
@@ -58,7 +58,7 @@ internal static class LocadoraMapper
             { "summary", new AttributeValue { S = locadora.Summary } },
         };
     }
-    internal static Dictionary<string, AttributeValueUpdate> MapAttributeUpdates(Locadora locadora)
+    public static Dictionary<string, AttributeValueUpdate> MapAttributeUpdates(Locadora locadora)
     {
         return new Dictionary<string, AttributeValueUpdate>
         {

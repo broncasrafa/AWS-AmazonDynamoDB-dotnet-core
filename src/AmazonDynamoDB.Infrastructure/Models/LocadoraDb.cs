@@ -3,7 +3,7 @@
 namespace AmazonDynamoDB.Infrastructure.Models;
 
 [DynamoDBTable("LocadoraWeb")]
-internal class LocadoraDb
+public class LocadoraDb
 {
     [DynamoDBHashKey("title_id")]
     public string TitleId { get; set; }

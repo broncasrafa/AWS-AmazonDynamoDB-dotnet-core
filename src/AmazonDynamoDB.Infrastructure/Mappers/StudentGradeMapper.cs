@@ -3,7 +3,7 @@ using AmazonDynamoDB.Core.Entities;
 
 namespace AmazonDynamoDB.Infrastructure.Mappers;
 
-internal static class StudentGradeMapper
+public static class StudentGradeMapper
 {
     public static IEnumerable<StudentGrade> Map(IEnumerable<Document> items)
     {

@@ -4,7 +4,7 @@ namespace AmazonDynamoDB.Infrastructure.Models;
 
 
 [DynamoDBTable("SchoolGrade")]
-internal class SchoolGradeDb
+public class SchoolGradeDb
 {
     [DynamoDBHashKey]
     public string StudentId { get; set; }
